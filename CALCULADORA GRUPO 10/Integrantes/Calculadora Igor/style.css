@@ -1,0 +1,108 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto Slab", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-size: 1rem;
+}
+body {
+    text-align: center;
+    background: linear-gradient(to bottom, rgb(205, 222, 245), rgb(45, 170, 209));
+    min-height: 100vh;
+}
+.titulo{
+    font-size: 1rem;
+    margin-top: 1%;
+}
+.painel{
+    width: 65%;
+    height: 85vh;
+    background-color:rgba(45, 171, 209, 0.322) ;
+    text-align: left;
+    margin-left: 18%;
+    border: solid 4px black;
+    border-radius: 20px;
+    margin-top: 1%;
+    padding: 0.5%;
+}
+.valores {
+    margin-left: 4%;
+    width: 80%;
+    padding: 0.7%;
+    border: 2px solid #333;
+    border-radius: 5px;
+    font-weight: 900;
+    color: #000000;
+    box-shadow: -3px 4px 0 #888, -5px 7px 0 #333;
+    position: relative;
+    margin-top: 1.5%;
+    margin-left: 10%;
+    margin-bottom: 1.5%;
+}
+.div_button{
+    margin-left: 3%;
+    width: 90%;
+    height: 8vh;
+    /* background-color: red; */
+    margin-top: 0.7vw;
+    position: relative;
+    overflow: hidden; /* Evita que o botão ultrapasse o painel */   
+}
+.button{
+    text-align: center;
+    width: 70%;
+    padding: 1%;
+    border: 2px solid #000;
+    border-radius: 9px;
+    font-weight: 900;
+    color: rgb(255, 255, 255);
+    background-color: #444;
+    box-shadow: -2px 3px 0 #222, -4px 6px 0 #000;
+    margin-left: 16%;
+
+}
+.button:active {
+    box-shadow: inset -4px 4px 0 #222;
+    font-size: 0.9rem;
+}
+.bold{
+    font-weight: 500;
+}
+label{
+    margin-left: 10%;
+}
+.resultado{
+    text-align: left;
+    margin-left: 25%;
+    margin-bottom: 1.5%;
+}
+.container{
+    width: 80%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+}
+.header{
+    border-bottom: 3px solid #0c0c0c;
+}
+
+.titulo1{
+    color: #000000;
+    font-weight: 500;
+}
+
+.navbar{
+    width: 400px;
+    display: flex;
+    color: #000000;
+    justify-content: space-between;
+    list-style: none;
+    align-items: center;
+    height: 2.5rem;
+}
+
+.header .container{
+    justify-content: space-between;
+}

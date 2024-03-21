@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculadora financeira</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="corpoCalculadora">
+    <div class="calculadoraFinanceira">
+        <div class="topo">
+            <h2 class="h2">Calculadora Financeira MIOT</h2>
+            <form action="#">
+                <div class="grupo">
+                    <div class="titulo"> Quantos metros quadrados tem suas instalações</div>
+                    <input id="input_qtd_metros_quadrados_local" placeholder="100" class="input">
+                </div>
+                <div class="grupo">
+                    <div class="titulo"> Qual o valor inicial que você irá investir em nosso projeto?</div>
+                    <input id="input_investimento_inicial" placeholder="1500" class="input">
+                </div>
+
+                <div class="grupo">
+                    <div class="titulo"> Você já teve problemas com sobrecargas elétricas em suas tomadas?</div>
+                    <input id="input_sobrecargas_elétricas" placeholder="sim/não" class="input">
+                </div>
+
+                <div class="grupo">
+                    <div class="titulo"> Caso tenha problemas, quantos reparos faz anualmente? <b>(deixe em branco caso
+                            não)</b></div>
+                    <input id="input_qtd_reparos" placeholder="10" class="input">
+                </div>
+                <div class="grupo">
+                    <div class="titulo"> Caso faça reparos, eles são simples ou complexos? <b>(deixe em branco
+                            caso não)</b> </div>
+                    <input id="input_qualidade_reparo" placeholder="simples/complexos" class="input">
+                </div>
+
+
+
+
+
+                <div class="botaoInvestimento">
+                    <button class="botaoInvestimento" onclick="calcularInvestimento()">Simular Investimento</button>
+                </div>
+
+                <span class="resultadoSimulacao" id="span_exibir_simulacao"></span>
+
+        </div>
+
+        </form>
+    </div>
+    </div>
+    <div class="imagem">
+        <img src="C:\Users\Gusta\Desktop\LOGO IOT .png" class="LOGO">
+    </div>
+</body>
+
+</html>
+<script>
+    function calcularInvestimento() {
+        var metrosQuadradosResidência = Number(input_qtd_metros_quadrados_local.value)
+        var investimentoInicial = Number(input_investimento_inicial.value)
+        var problemasDescargasEletricas = input_sobrecargas_elétricas.value
+        var qtdTomadasAmbiente = Math.trunc(metrosQuadradosResidência / 8)
+        var valorTomada = Number(210)
+        var qtdTomadasInstaladas = Math.trunc(investimentoInicial / valorTomada)
+        var metrosQuadradosCobridos = qtdTomadasInstaladas * 8
+        var coberturaTotal = Math.trunc(metrosQuadradosCobridos / metrosQuadradosResidência * 100)
+        var decimalCoberturaTotal = metrosQuadradosCobridos / metrosQuadradosResidência
+        var qtdReparos = Number(input_qtd_reparos.value)
+        var qualidadeReparos = input_qualidade_reparo.value
+        var custoReparoSimples = Number(300)
+        var custoReparoComplexo = Number(900)
+        var valorRealReparoSimples = Math.trunc(qtdReparos * custoReparoSimples * decimalCoberturaTotal)
+        var valorRealReparoComplexo = Math.trunc(qtdReparos * custoReparoComplexo * decimalCoberturaTotal)
+        var mensagemBaixaCoberturaSimplesProblema = `
+             Com uma casa de ${metrosQuadradosResidência}M², e um investimento inicial de R$${investimentoInicial}, 
+             você terá uma cobertura de aproximadamente ${coberturaTotal}% de suas instalações. <br> 
+             Economizaria R$${valorRealReparoSimples} anualmente com reparos simples, R$${valorRealReparoSimples * 5} em 5 anos, e R$${valorRealReparoSimples * 10} em 10 anos!!.<br>
+             Entretanto sua cobertura de ${coberturaTotal}% das instalações não seria suficiente para se abster de problemas com sobrecargas elétricas. <br>
+             Você estará vulnerável ao superaquecimento das tomadas, que pode causar incêndios e até riscos de vida! Além de curtos, que representam perigo aos seus equipamentos.<br>
+             Invista mais um pouco, sinta-se mais seguro e aproveite os benefícios do nosso produto!`
+        var mensagemBaixaCoberturaSimplesNproblema =
+            `Com uma casa de ${metrosQuadradosResidência}M², e um investimento inicial de R$${investimentoInicial}, 
+             você terá uma cobertura de aproximadamente ${coberturaTotal}% de suas instalações. <br> 
+             Entretanto sua cobertura de ${coberturaTotal}% das instalações não seria suficiente para se abster de problemas com sobrecargas elétricas. <br>
+             Você estará vulnerável ao superaquecimento das tomadas, que pode causar incêndios e até riscos de vida! Além de curtos, que representam perigo aos seus equipamentos. <br>
+             Invista mais um pouco, sinta-se mais seguro e aproveite os benefícios do nosso produto!`
+        var mensagemBaixaCoberturaComplexoProblema =
+            `Com uma casa de ${metrosQuadradosResidência}M², e um investimento inicial de R$${investimentoInicial}, 
+             você terá uma cobertura de aproximadamente ${coberturaTotal}% de suas instalações. <br> 
+             Economizaria R$${valorRealReparoComplexo} anualmente com reparos complexos, R$${valorRealReparoComplexo * 5} em 5 anos, e R$${valorRealReparoComplexo * 10} em 10 anos!!. <br> 
+             Entretanto sua cobertura de ${coberturaTotal}% das instalações não seria suficiente para se abster de problemas com sobrecargas elétricas. <br>
+             Você estará vulnerável ao superaquecimento das tomadas, que pode causar incêndios e até riscos de vida! Além de curtos, que representam perigo aos seus equipamentos. <br>
+             Invista mais um pouco, sinta-se mais seguro e aproveite os benefícios do nosso produto!`
+        var mensagemBaixaCoberturaComplexoNproblema =
+            `Com uma casa de ${metrosQuadradosResidência}M², e um investimento inicial de R$${investimentoInicial}, 
+             você terá uma cobertura de aproximadamente ${coberturaTotal}% de suas instalações. <br>
+             Entretanto sua cobertura de ${coberturaTotal}% das instalações não seria suficiente para se abster de problemas com sobrecargas elétricas. <br>
+             Você estará vulnerável ao superaquecimento das tomadas, que pode causar incêndios e até riscos de vida! Além de curtos, que representam perigo aos seus equipamentos.<br>
+             Invista mais um pouco, sinta-se mais seguro e aproveite os benefícios do nosso produto!`
+        var mensagemAltaCoberturaSimplesProblema =
+            `Com uma casa de ${metrosQuadradosResidência}M², e um investimento inicial de R$${investimentoInicial}, 
+             você terá uma cobertura de aproximadamente ${coberturaTotal}% de suas instalações. <br>
+             Economizaria R$${valorRealReparoSimples} anualmente com reparos simples, R$${valorRealReparoSimples * 5} em 5 anos, e R$${valorRealReparoSimples * 10} em 10 anos!!. <br> 
+             Sua cobertura de ${coberturaTotal}% das instalações são suficientes para uma maior proteção contra sobrecargas elétricas. <br>
+             Além de estar protegido do superaquecimento das tomadas, dos incêndios que podem custar uma inteira mobiliação de imóveis, que em São Paulo no ano de 2024 varia entre R$20,000.00 a R$ 150,000.00, além do alto custo anual de reparos. <br> 
+             E você ainda pode estar salvando uma vida! Obrigado por contribuir com o nosso projeto!!`
+
+        var mensagemAltaCoberturaSimplesNproblema =
+            `Com uma casa de ${metrosQuadradosResidência}M², e um investimento inicial de R$${investimentoInicial}, 
+             você terá uma cobertura de aproximadamente ${coberturaTotal}% de suas instalações. <br>
+             Sua cobertura de ${coberturaTotal}% das instalações são suficientes para uma maior proteção contra sobrecargas elétricas. <br>
+             Além de estar protegido do superaquecimento das tomadas, dos incêndios que podem custar uma inteira mobiliação de imóveis, que em São Paulo no ano de 2024 varia entre R$20,000.00 a R$ 150,000.00, além do alto custo anual de reparos. <br> 
+             E você ainda pode estar salvando uma vida! Obrigado por contribuir com o nosso projeto!!`
+
+        var mensagemAltaCoberturaComplexoProblema =
+            `Com uma casa de ${metrosQuadradosResidência}M², e um investimento inicial de R$${investimentoInicial}, 
+             você terá uma cobertura de aproximadamente ${coberturaTotal}% de suas instalações. <br> 
+             Economizaria R$${valorRealReparoComplexo} anualmente com reparos complexos, R$${valorRealReparoComplexo * 5} em 5 anos, e R$${valorRealReparoComplexo * 10} em 10 anos!!.<br> 
+             Sua cobertura de ${coberturaTotal}% das instalações são suficientes para uma maior proteção contra sobrecargas elétricas. <br>
+             Além de estar protegido do superaquecimento das tomadas, dos incêndios que podem custar uma inteira mobiliação de imóveis, que em São Paulo no ano de 2024 varia entre R$20,000.00 a R$ 150,000.00, além do alto custo anual de reparos. <br> 
+             E você ainda pode estar salvando uma vida! Obrigado por contribuir com o nosso projeto!!`
+
+        var mensagemAltaCoberturaComplexoNproblema =
+            `Com uma casa de ${metrosQuadradosResidência}M², e um investimento inicial de R$${investimentoInicial}, 
+             você terá uma cobertura de aproximadamente ${coberturaTotal}% de suas instalações. <br> 
+             Sua cobertura de ${coberturaTotal}% das instalações são suficientes para uma maior proteção contra sobrecargas elétricas. <br>
+             Além de estar protegido do superaquecimento das tomadas, dos incêndios que podem custar uma inteira mobiliação de imóveis, que em São Paulo no ano de 2024 varia entre R$20,000.00 a R$ 150,000.00, além do alto custo anual de reparos. <br> 
+             E você ainda pode estar salvando uma vida! Obrigado por contribuir com o nosso projeto!!`
+
+
+
+
+        if (coberturaTotal < 50) {
+            if (qualidadeReparos == "simples") {
+                if (problemasDescargasEletricas == "sim") {
+                    span_exibir_simulacao.innerHTML = mensagemBaixaCoberturaSimplesProblema
+                }
+                else {
+                    if (problemasDescargasEletricas == "não") {
+                        span_exibir_simulacao.innerHTML = mensagemBaixaCoberturaSimplesNproblema
+                    }
+                }
+            }
+            else {
+                if (problemasDescargasEletricas == "sim") {
+                    span_exibir_simulacao.innerHTML = mensagemBaixaCoberturaComplexoProblema
+                }
+                if (problemasDescargasEletricas == "não") {
+                    span_exibir_simulacao.innerHTML = mensagemBaixaCoberturaComplexoNproblema
+                }
+            }
+        }
+        else {
+            if (qualidadeReparos == "simples") {
+                if (problemasDescargasEletricas == "sim") {
+                    span_exibir_simulacao.innerHTML = mensagemAltaCoberturaSimplesProblema
+                }
+                if (problemasDescargasEletricas == "não") {
+                    span_exibir_simulacao.innerHTML = mensagemAltaCoberturaSimplesNproblema
+
+                }
+            } else {
+                if (problemasDescargasEletricas == "sim") {
+                    span_exibir_simulacao.innerHTML = mensagemAltaCoberturaComplexoProblema
+                } else {
+                    span_exibir_simulacao.innerHTML = mensagemAltaCoberturaComplexoNproblema
+
+                }
+            }
+
+        }
+    }
+</script>

@@ -1,0 +1,65 @@
+.corpoCalculadora {
+    background-color: cyan;
+}
+
+.calculadoraFinanceira {
+    display: flex;
+    font-family: "Roboto", sans-serif;
+    width: 500px;
+    height: 1100px;
+    margin: 24px auto;
+    border-radius: 45%;
+    color: #14213d;
+
+
+
+}
+
+.calculadoraFinanceira .topo {
+    background-color: #14213d;
+    color: white;
+    padding: 32px;
+    border-radius: 2%;
+    height: 675px;
+    ;
+}
+
+.calculadoraFinanceira .h2 {
+    color: white;
+    text-align: center;
+}
+
+.calculadoraFinanceira .titulo {
+    justify-content: center;
+    color: white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+.calculadoraFinanceira .botaoInvestimento {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 6px;
+}
+
+.calculadoraFinanceira .resultadoSimulacao {
+    font-family: "Roboto";
+    font-size: 15px;
+}
+
+.grupo .input {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    border-radius: 7px;
+}
+
+.imagem {
+    display: flex;
+    justify-content: left;
+    height: 130px;
+    width: 120px;
+
+}

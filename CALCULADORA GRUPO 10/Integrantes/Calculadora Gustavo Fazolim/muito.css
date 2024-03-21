@@ -1,0 +1,108 @@
+* {
+    margin: 2;
+    padding: 2;
+    box-sizing: border-box;
+    font-family: "Roboto Slab", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-size: 1rem;
+}
+body {
+    text-align: center;
+    background: linear-gradient(to bottom, rgb(83, 114, 158), rgb(219, 10, 10));
+    min-height: 40vh;
+}
+.titulo{
+    font-size: 2rem;
+    margin-top: -0%;
+}
+.painel{
+    width: 55%;
+    height: 85vh;
+    background-color:rgba(47, 162, 216, 0.966) ;
+    text-align: center;
+    margin-left: 20%;
+    border: solid 4px rgb(0, 0, 0);
+    border-radius: 20px;
+    margin-top: 1%;
+    padding: 0.6%;
+}
+.valores {
+    margin-left: 5%;
+    width: 80%;
+    padding: 0.7%;
+    border: 2px solid #c01414;
+    border-radius: 5px;
+    font-weight: 900;
+    color: #000000;
+    box-shadow: -3px 4px 0 #4c2dff, -5px 7px 0 #000000;
+    position: relative;
+    margin-top: 1.5%;
+    margin-left: 10%;
+    margin-bottom: 1.5%;
+}
+.div_button{
+    margin-left: 3%;
+    width: 90%;
+    height: 8vh;
+    /* background-color: red; */
+    margin-top: 0.7vw;
+    position: relative;
+    overflow: hidden; /* Evita que o botão ultrapasse o painel */   
+}
+.button{
+    text-align: center;
+    width: 70%;
+    padding: 1%;
+    border: 2px solid #000;
+    border-radius: 9px;
+    font-weight: 900;
+    color: rgb(255, 255, 255);
+    background-color: #ad06fa;
+    box-shadow: -2px 3px 0 #456185, -4px 6px 0 #000;
+    margin-left: 16%;
+
+}
+.button:active {
+    box-shadow: inset 4px 4px 0 #222;
+    font-size: 0.9rem;
+}
+.bold{
+    font-weight: 500;
+}
+label{
+    margin-left: 15%;
+}
+.resultado{
+    text-align: center;
+    margin-left: 25%;
+    margin-bottom: 1.5%;
+}
+.container{
+    width: 80%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+}
+.header{
+    border-bottom: 3px solid #000000;
+}
+
+.titulo1{
+    color: #000000;
+    font-weight: 500;
+}
+
+.navbar{
+    width: 400px;
+    display: flex;
+    color: #000000;
+    justify-content: space-between;
+    list-style: none;
+    align-items: center;
+    height: 2.5rem;
+}
+
+.header .container{
+    justify-content: space-between;
+}

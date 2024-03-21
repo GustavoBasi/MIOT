@@ -1,0 +1,30 @@
+*{
+font-family: 'Poppins', sans-serif;
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+
+
+}
+
+.pai {
+width: 100%;
+height: 100vh;
+display: flex;
+align-items: center;
+justify-content: center;
+background: linear-gradient(90deg, #5fcfff, #007cb1);
+color: #ffffff;
+}
+
+.filho {
+
+background-color: #00028a;
+padding: 40px;
+border-radius: 8px;
+box-shadow: 10px 10px 10px rgba(0,0,0,0.323);
+display: flex;
+flex-direction: column;
+gap: 25px;
+
+}

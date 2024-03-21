@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tomada IOT</title>
+    <link rel="stylesheet" href="tomada.css">
+</head>
+<body>
+<div class="pai">
+    
+<div class="filho">
+<h1>Tomada IOT</h1> <br>
+
+Quantas tomadas possuem no local: <input type="number" id="input_tomadas_local"> <br>
+
+Quantas tomadas você quer substituir para IOT: <input type="number" id="input_qtd_tomadasIOT"> <br>
+<br>
+
+<button onclick="verificarPreco()">Verificar preço</button>
+
+
+<div id="div_tomada"></div>
+</div>
+</div>
+</body>
+</html>
+
+<script>
+
+function verificarPreco () {
+
+var TomadasLocal = Number(input_tomadas_local.value)
+var TomadasIOT = Number(input_qtd_tomadasIOT.value)
+
+var ValorTotal = TomadasIOT * 231
+
+var Economia = TomadasIOT * 300
+
+var Protecao = (TomadasIOT * 100) / TomadasLocal
+
+if (TomadasLocal < TomadasIOT) {
+
+alert("Você não pode colocar mais Tomadas IOT do que o local precisa!")   
+    
+} else {
+div_tomada.innerHTML = `Com ${TomadasLocal} tomadas no local e comprando ${TomadasIOT}
+tomadas IOT, você estará protegendo ${Protecao}% de sua residencia contra incêndios com tomadas. <br>
+Com isso terá que investir R$${ValorTotal}, assim economizando R$${Economia} em cada manutenção do que seria gasto.
+Sem contar que estará salvando vidas de todos no local!`
+
+}
+
+}
+
+
+
+
+</script>

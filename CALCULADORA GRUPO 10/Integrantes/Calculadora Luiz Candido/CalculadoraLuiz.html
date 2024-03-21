@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="mainFrame">
+        <div class="pai">
+            <div id="header">
+                <h1>Calculadora</h1>
+                <hr>
+            </div>
+            <h2>Gastos com seguro</h2>
+            <div class="divInserirDado">
+                <p>Tipo do imóvel (casa ou apartamento)</p>
+                <input type="text" id="inputTipoImovel">
+            </div>
+            <div class="divInserirDado">
+                <p>Uso do imóvel (moradia, locação ou temporada)</p>
+                <input type="text" id="inputUsoImovel">
+            </div>
+            <div class="divInserirDado">
+                <p>Material usado na construção (madeira ou alvenaria)</p>
+                <input type="text" id="inputMaterialImovel">
+            </div>
+            <div>
+                <hr>
+                <h2>Gastos com manutenção elétrica</h2>
+            </div>
+            <div class="divInserirDado">
+                <p>Tamanho da sua casa (m²)</p>
+                <input type="number" id="inputTamanhoImovel">
+            </div>
+            <div class="divInserirDado">
+                <p>Assistências técnicas realizadas por ano</p>
+                <input type="number" id="inputNumeroDeAssistencias">
+            </div>
+            <hr>
+            <small>(Caso a escrita estiver incorreta o dado não será computado)</small>
+            <button onclick="calcularEconomia()">CALCULAR</button>
+        </div>
+        <div id="resultados">
+            <!-- <div id="cardDosResultados">
+                <h1>Resultados</h1>
+                <p>Em buscas de outros metodos para igualar a segurança de nosso método você aborda dois metodos.</p>
+                <p>Caso busque um seguro contra incendios você irá perder cerca de ${custoSeguro} em 10 anos.</p>
+                <p>Caso busque fazer assistências técnicas você irá perder cerca de ${custoAssistencia} em 10 anos.</p>
+                <p>Totalizando <b>${custoSeguro+custoAssistencia}</b> de prezuizo</p>
+            </div> -->
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    function calcularEconomia() {
+        // Transformando os inputs em variáveis.
+        let tipoImovel = inputTipoImovel.value
+        let usoImovel = inputUsoImovel.value
+        let materialImovel = inputMaterialImovel.value
+        let tamanhoImovel = Number(inputTamanhoImovel.value)
+        let assistenciasNoAno = Number(inputNumeroDeAssistencias.value)
+
+        // Definindo as variaveis dos descontos que poderam ocorrer.
+        let descontoPeloTipo = 0
+        let descontoPeloUso = 0
+        let descontoPeloMaterial = 0
+
+        // Definindo váriavel que armazena o valor dos custos que estãosendo contornados.
+        let custoAssistencia = 0
+        let custoSeguro = 0
+
+        // Calculando descontoPeloTipo
+        if (tipoImovel == "casa") {
+            descontoPeloTipo = 1
+        } else {
+            if (tipoImovel == "apartamento") {
+                descontoPeloTipo = 0.9
+            } else {
+                // Caso não sejá nenhuma das opções
+                alert("Tipo do Imovel Inválido")
+            }
+        }
+
+        // Calculando descontoPeloUso
+        if (usoImovel == "moradia") {
+            descontoPeloUso = 1
+        } else {
+            if (usoImovel == "locação") {
+                descontoPeloUso = 0.9
+            } else {
+                if (usoImovel == "temporada") {
+                    descontoPeloUso = 1.2
+                } else {
+                    // Caso não sejá nenhuma das opções
+                    alert("Uso do Imovel Inválido")
+                }
+            }
+        }
+
+        // Calculando descontoPeloMaterial
+        if (materialImovel == "alvenaria") {
+            descontoPeloMaterial = 1
+        } else {
+            if (materialImovel == "madeira") {
+                descontoPeloMaterial = 0.9
+            } else {
+                // Caso não sejá nenhuma das opções
+                alert("Material do Imovel Inválido")
+            }
+        }
+
+        custoSeguro= 210*descontoPeloMaterial*descontoPeloTipo*descontoPeloUso*10
+
+        // Calculando custo de assistências técnicas
+        custoAssistencia = 1500 * assistenciasNoAno * 10
+        if (tamanhoImovel <= 150) {
+            custoAssistencia = 7500 * assistenciasNoAno * 10
+            if (tamanhoImovel <= 70) {
+                custoAssistencia = 350 * assistenciasNoAno * 10
+            }
+        }
+        resultados.innerHTML=
+        `
+        <div id="cardDosResultados">
+                <h1>Resultados</h1>
+                <p>Em buscas de outros metodos para igualar a segurança de nosso método você aborda dois metodos.</p>
+                <p>Caso busque um seguro contra incendios você irá perder cerca de R$${custoSeguro} em 10 anos.</p>
+                <p>Caso busque fazer assistências técnicas você irá perder cerca de R$${custoAssistencia} em 10 anos.</p>
+                <p>Totalizando <b>R$${custoSeguro+custoAssistencia}</b> de prejuízo</p>
+            </div>
+        `
+    }
+</script>

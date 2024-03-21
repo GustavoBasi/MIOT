@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ptbr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Calculadora Financeira</title>
+</head>
+
+<body>
+    <div class="header">
+        <div class="container">
+            <h1 class="titulo"> Calculadora Financeira </h1>
+            <ul class="navbar">
+                <li>Quem Somos</li>
+                <li>Fale conosco</li>
+                <li>|</li>
+                <li>login</li>
+                <li>MIOT</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="pai">
+        <div class="filho1">
+            <p> Quantas tomadas serão adquiridas : </p>
+            <input type="number" id="input_tomadas_compradas">
+            <p> Quantos reparos você realiza por ano em sua rede elétrica :</p>
+            <input type="number" id="input_reparos">
+            <p> Quantas tomadas você troca por ano em sua residência :</p>
+            <input type="number" id="input_tomadas_trocadas">
+            <p> Quantas tomadas você tem em sua residência :</p>
+            <input type="number" id="input_qtdTomadasdacasa">
+            <p> Quantos curtos ocoreram em um ano na sua residência :</p>
+            <input type="number" id="qtd_curtos_anos">
+            <p> Quantidade de aparelhos queimados por conta de curtos :</p>
+            <input type="number" id="input_aparelhos_queimados">
+            <p> A residência apresent a seguro : (informe com sim ou não) </p>
+            <input type="text" id="input_seguro"> <br>
+
+            <br> <button onclick="calcular_economia ()">Calcule o quanto você deixou de gastar </button> <br>
+            <br>
+            <div class="div" id="div_conta"></div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    function calcular_economia() {
+        var qtdTomadasCompradas = Number(input_tomadas_compradas.value)
+        var valorTomadasCompradas = Number(qtdTomadasCompradas * 231)
+        var reparoAno = Number(input_reparos.value * 300)
+        var tomadasTrocadas = Number(input_tomadas_trocadas.value * 55)
+        var qtdTomadasdaCasa = Number(input_qtdTomadasdacasa.value)
+        var aparelhosqueimados = Number(input_aparelhos_queimados.value * 360)
+        var protecao = Number(qtdTomadasCompradas / qtdTomadasdaCasa * 100)
+        var curtos = Number(qtd_curtos_anos.value)
+        var seguro = input_seguro.value
+        var valorSeguro = 456.55
+        var gasto = Number(reparoAno + tomadasTrocadas + aparelhosqueimados)
+
+        if (seguro == "sim") {
+            if (curtos <= 7) {
+                div_conta.innerHTML = `  <p> NOSSO PROJETO FARÁ DIFERENÇA PARA VOCÊ  </p>
+            Ao comprar ${qtdTomadasCompradas} tomadas , você estará protegendo ${protecao}% da sua casa , 
+            contra incêndios e curtos , e ainda irá evitar um gasto de ${gasto}R$ com reparos por ano
+            e ${valorSeguro}R$ de seguro, isso tudo por apenas ${valorTomadasCompradas}R$  `
+            }
+            else if (curtos <= 12) {
+                div_conta.innerHTML = ` <p> NOSSO PROJETO É ESSENCIAL PARA VOCÊ </p>
+            Ao comprar ${qtdTomadasCompradas} tomadas , você estará protegendo ${protecao}% da sua casa , 
+            contra incêndios e curtos , e ainda irá evitar um gasto de ${gasto}R$ por ano
+            e ${valorSeguro}R$ de seguro, isso tudo por apenas ${valorTomadasCompradas}R$ `
+            }
+            else {
+                div_conta.innerHTML = ` <p> VOCÊ PRECISA ADQUIRIR NOSSAS TOMADAS URGENTEMENTE </p>
+            Ao comprar ${qtdTomadasCompradas} tomadas , você estará protegendo ${protecao}% da sua casa , 
+            contra incêndios e curtos , e ainda irá evitar um gasto de ${gasto}R$ por ano
+            e ${valorSeguro}R$ de seguro, isso tudo por apenas ${valorTomadasCompradas}R$ `
+            }
+        }
+        else {
+            if (curtos <= 7) {
+                div_conta.innerHTML = ` <p> NOSSO PROJETO FARÁ DIFERENÇA PARA VOCÊ </p>
+            Ao comprar ${qtdTomadasCompradas} tomadas , você estará protegendo ${protecao}% da sua casa , 
+            contra incêndios e curtos , e ainda irá evitar um gasto de ${gasto}R$, isso tudo por apenas ${valorTomadasCompradas}R$ `
+            }
+            else if (curtos < 12) {
+                div_conta.innerHTML = ` <p> NOSSO PROJETO É ESSENCIAL PARA VOCÊ </p>
+            Ao comprar ${qtdTomadasCompradas} tomadas , você estará protegendo ${protecao}% da sua casa , 
+            contra incêndios e curtos , e ainda irá evitar um gasto de ${gasto}R$ , isso tudo por apenas ${valorTomadasCompradas}R$ `
+            }
+            else {
+                div_conta.innerHTML = ` <p>VOCÊ PRECISA ADQUIRIR NOSSAS TOMADAS URGENTEMENTE  </p>
+            Ao comprar ${qtdTomadasCompradas} tomadas , você estará protegendo ${protecao}% da sua casa , 
+            contra incêndios e curtos , e ainda irá evitar um gasto de ${gasto}R$ , isso tudo por apenas ${valorTomadasCompradas}R$ `
+            }
+        }
+    }
+
+</script>

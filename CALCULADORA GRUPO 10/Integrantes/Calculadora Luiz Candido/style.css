@@ -1,0 +1,104 @@
+*{
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #000009
+}
+
+html, body{
+    height: 100%;
+}
+
+h2{
+    font-size: 14px;
+}
+
+hr{
+    border-top: 1px solid #207e9b;
+}
+
+small{
+    font-size: 10px;
+}
+
+button{
+    margin-top: 5vh;
+    height: 80px;
+    color: white;
+    font-size: large;
+    font-weight: bold;
+    border-radius: 20px;
+    border: none;
+    background-color: #207e9b;
+    transition: 100ms;
+}
+
+button:hover{
+    transition: 200ms;
+    color: black;
+    background-color: #2daad1;
+    border: 2px solid #2daad1;
+}
+
+#mainFrame{
+    display: flex;
+
+}
+
+#container{
+    border: 10px solid black;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    height: 100vh;
+}
+
+.pai{
+    border-right: 3px solid #2daad1;
+    height: 100vh;
+    width: 30vw;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+#header{
+    margin-top: 30px;
+}
+
+.divInserirDado{
+    margin: 10px 0px;
+    font-size: 13px;
+}
+
+.divInserirDado input{
+    width: 200px;
+    text-align: center;
+    margin-top: 3px;
+    border-radius: 5px;
+    border: 0;
+    border-bottom: 1px solid #207e9b;
+    width: 70%;
+    height: 20px;
+}
+
+#resultados{
+    display: flex;
+    /* border: 2px solid red; */
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+#cardDosResultados{
+    width: 40vw;
+    height: 55vh;
+    border: 2px solid rgb(197, 194, 194);
+    border-radius: 80px;
+    text-align: center;
+    padding: 10px 20px;
+}
+
+#cardDosResultados h1, #cardDosResultados p{
+    margin: 20px 0px;
+}

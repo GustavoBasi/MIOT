@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcBkXYFVkSteju_Ib5RfMpoMydiBz_0XAQHXAIqtbDTyZn5IOqDq6POleaPrqn0gUYw_8&usqp=CAU">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+    <title>Calculadora Finanaceira</title>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1 class="titulo1">
+                <u>MIOT</u>
+            </h1>
+            <ul class="navbar">
+                <li>Inicial</li>
+                <li>Simulador</li>
+                <li>|</li>
+                <li>Login</li>
+                <li>Cadastro</li>
+            </ul>
+        </div>
+    </div>
+    <p class="titulo">Simule aqui o quanto você <span class="bold">Economizaria</span> com o nosso produto</p>
+    <div class="painel">
+        <label for="">Está compra vai ser para casa ou prédio (empresa/indústria)</label>
+        <input type="search" id="input_tipoResidencia" class="valores" placeholder="Ex: prédio" required />
+        <label for="">Número de tomadas na residência:</label>
+        <input type="search" id="input_numTomadas" class="valores" placeholder="Ex: 50" required />
+        <label for="">Número de tomadas que serão compradas::</label>
+        <input type="search" id="input_numTomadasCompradas" class="valores" placeholder="Ex: 40" required />
+        <label for="">Quantidade de Manutenções de tomada sobrecargas elétricas(anual):</label>
+        <input type="search" id="input_numManutencao" class="valores" placeholder="Ex: 4" required />
+        <label for="">Essas manuntenção são simples ou complexas?</label>
+        <input type="search"  id="input_tipoManutencao" class="valores" placeholder="Ex: simples" required />
+        <div class="div_button">
+            <button onclick="calcularEconomia()" class="button"> Simular </button>
+        </div>
+       
+    </div>
+    <br><p><b>Obs:Simulamos em um período de 10 anos </b></p><br>
+
+    <div class="resultado" id="resultado">
+
+    </div>
+    
+
+</body>
+<script>
+    function calcularEconomia(){
+        var tipoResidencia = input_tipoResidencia.value;
+        var numTomadas = Number(input_numTomadas.value);
+        var numTomadasCompradas = Number(input_numTomadasCompradas.value);
+        var custoTotalMiot = numTomadasCompradas * 200;
+        var numManutencao = Number(input_numManutencao.value);
+        var tipoManutencao = input_tipoManutencao.value;
+        var tomadaDesprotegida = numTomadas - numTomadasCompradas;
+        var custoTomadaDesprotegida = tomadaDesprotegida * 65;
+
+        if(tipoResidencia == "casa"){
+           if(tipoManutencao == "simples"){
+            var custoTotalFiacao = (numManutencao * 65 + custoTomadaDesprotegida) * 10;
+            var economia = custoTotalFiacao - custoTotalMiot;
+            resultado.innerHTML = `
+            <p>Você prentede comprar ${numTomadasCompradas} tomada da MIOT, para proteger</p>
+            <p>A sua ${tipoResidencia} que contêm ${numTomadas} tomadas.</p>
+            <p>Deixando em risco ${tomadaDesprotegida} tomada que podem te dar um prejuizo de no mínimo  <b>R$${custoTomadaDesprotegida}</b> </p>
+            <p>Com a compra de ${numTomadasCompradas} tomadas da MIOT sairia num custo de  <b>R$${custoTotalMiot}</b></p>
+            <p>O tipo de manuntenção dela é ${tipoManutencao}, saindo por R$65 a troca de cada tomada</p>
+            <p>Sem a compra do nosso produto você pode ter um prejuízo de até  <b>R$${custoTotalFiacao}</b> em 10 anos</p>
+            <p>Com a compra do no produto você estaria  Economizando <b>R$${economia}</b></p>
+             `;
+
+           }if(tipoManutencao == "complexa"){
+            var custoTotalFiacao = ((numManutencao * 65 + custoTomadaDesprotegida) * 10) + 3000;
+            var economia = custoTotalFiacao - custoTotalMiot;
+            resultado.innerHTML = `
+            <p>Você prentede comprar ${numTomadasCompradas} tomada da MIOT, para proteger</p>
+            <p>A sua ${tipoResidencia} que contêm ${numTomadas} tomadas.</p>
+            <p>Deixando em risco ${tomadaDesprotegida} tomada que podem te dar um prejuizo de no mínimo  <b>R$${custoTomadaDesprotegida}</b> </p>
+            <p>Com a compra de ${numTomadasCompradas} tomadas da MIOT sairia num custo de <b>R$${custoTotalMiot}</b></p>
+            <p>O tipo de manuntenção dela é ${tipoManutencao}, saindo por R$65 a troca de cada tomada, mais R$3000 pela afiação por ser ${tipoResidencia}</p>
+            <p>Sem a compra do nosso produto você pode ter um prejuízo de até <b>R$${custoTotalFiacao}</b></p>
+            <p>Com a compra do no produto você estaria  Economizando <b>R$${economia}</b></p>
+             `;
+
+           }
+        }else{
+            if(tipoManutencao == "simples"){
+             var custoTotalFiacao = (numManutencao * 65 + custoTomadaDesprotegida) * 10;
+             var economia = custoTotalFiacao - custoTotalMiot;
+
+             resultado.innerHTML = `
+             <p>Você prentede comprar ${numTomadasCompradas} tomada da MIOT, para proteger</p>
+            <p>A sua ${tipoResidencia} que contêm ${numTomadas} tomadas.</p>
+            <p>Deixando em risco ${tomadaDesprotegida} tomada que podem te dar um prejuizo de no mínimo  <b>R$${custoTomadaDesprotegida}</b> </p>
+            <p>Com a compra de ${numTomadasCompradas} tomadas da MIOT sairia num custo de  <b>R$${custoTotalMiot}</b></p>
+            <p>O tipo de manuntenção dela é ${tipoManutencao}, saindo por R$65 a troca de cada tomada</p>
+            <p>Sem a compra do nosso produto você pode ter um prejuízo de até <b>R$${custoTotalFiacao}</b></p>
+            <p>Com a compra do no produto você estaria  Economizando <b>R$${economia}</b></p>
+             `;
+
+            }if(tipoManutencao == "complexa"){
+             var custoTotalFiacao = ((numManutencao * 65 + custoTomadaDesprotegida) * 10 ) + 8000;
+             var economia = custoTotalFiacao - custoTotalMiot;
+
+             resultado.innerHTML = `
+             <p>Você prentede comprar ${numTomadasCompradas} tomada da MIOT, para proteger</p>
+            <p>A sua ${tipoResidencia} que contêm ${numTomadas} tomadas.</p>
+            <p>Deixando em risco ${tomadaDesprotegida} tomada que podem te dar um prejuizo de no mínimo  <b>R$${custoTomadaDesprotegida}</b></p>
+            <p>Com a compra de ${numTomadasCompradas} tomadas da MIOT sairia num custo de /b>R$${custoTotalMiot}</b></p>
+            <p>O tipo de manuntenção dela é ${tipoManutencao}, saindo por R$65 a troca de cada tomada, mais R$8000 pela afiação po ser ${tipoResidencia}</p>
+            <p>Sem a compra do nosso produto você pode ter um prejuízo de até <b>R$${custoTotalFiacao}</b></p>
+            <p>Com a compra do no produto você estaria  Economizando <b>R$${economia}</b></p>
+             `;
+
+            }
+        }
+    }
+        
+</script>
+</html>

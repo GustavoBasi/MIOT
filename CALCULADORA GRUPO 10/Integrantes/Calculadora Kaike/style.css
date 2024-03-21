@@ -1,0 +1,103 @@
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Verdana;
+    background-color: rgb(17, 16, 16);
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    display: flex;
+}
+
+.header {
+    border-bottom: 3px solid #5e6bfa;
+}
+
+.titulo {
+
+    color: #f2f3f4;
+    font-weight: 500;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+}
+
+
+
+
+.navbar {
+    width: 400px;
+    display: flex;
+    color: white;
+    justify-content: space-between;
+    list-style: none;
+    align-items: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+
+}
+
+.header .container {
+
+    justify-content: space-between;
+}
+
+.pai {
+    width: 100%;
+    height: 86%;
+    background-color: rgb(10, 10, 10);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.filho1 {
+    text-align: center;
+    width: 600px;
+    height: 4880px;
+    margin-top: 20px;
+    background-color: #5e6bfa;
+    color: rgb(24, 24, 25);
+    border-radius: 20px;
+    border: 6px solid rgb(15, 15, 15)
+}
+
+.filho1 p {
+    font-size: 15px;
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+
+
+}
+
+.filho1 input {
+
+    border-radius: 10px;
+    width: 150px;
+
+}
+
+.filho1 button {
+
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    border-radius: 10px;
+    height: 20px;
+}
+
+.div {
+
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}

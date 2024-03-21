@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Financeira</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main id="container">
+        <div id="calculator">
+            <h2>
+                Calculadora Financeira
+            </h2>
+
+            <div id="input_box">
+                <div class="input-field">
+                    <label for="value">Informe quantas tomadas deseja comprar:</label>
+                    <input id="input_qtd_tomadas">
+                </div>
+
+                <div class="input-field">
+                    <label for="fee">Informe quantas tomadas você tem em sua casa:</label>
+                    <input id="input_tomadasCasa">
+                </div>
+
+                <div class="input-field">
+                    <label for="time">Informe quantos curtos ocorreram no ano em sua casa:</label>
+                    <input id="input_curtosAno">
+                </div>
+
+                <div class="input-field">
+                    <label for="value">Informe quantas manutenções elétricas são feitas por ano em sua casa:</label>
+                    <input id="input_manutencaoAno">
+                </div>
+
+                <div class="input-field">
+                    <label for="fee">Informe o número de tomadas que você troca por ano em sua casa:</label>
+                    <input id="input_trocaTomadas">
+                </div>
+
+                <div class="input-field">
+                    <label for="time">Informe a quantidade de aparelhos queimados por conta de curtos no ano:</label>
+                    <input id="input_queimaAparelhos">
+                </div>
+
+            </div>
+
+            <button id="calcular" onclick="calcularEconomia()">Calcule o quanto economizou com o nosso produto</button>
+            <div id="div_resultadoConta"></div>
+
+</body>
+
+</html>
+
+<script>
+
+    function calcularEconomia() {
+
+        let tomadasCompradas = Number(input_qtd_tomadas.value)
+        let qtdTomadasnaCasa = Number(input_tomadasCasa.value)
+        let curtosAno = Number(input_curtosAno.value)
+        let manutencaoAno = Number(input_manutencaoAno.value * 40)
+        let trocasTomadas = Number(input_trocaTomadas.value)
+
+        let valorQueimaAparelhos = Number(input_queimaAparelhos.value * 360)
+        let valorTotalManutencao = manutencaoAno * qtdTomadasnaCasa
+
+        let CompraDasTomadas = Math.trunc(tomadasCompradas * 231)
+        let protecao = Math.trunc(tomadasCompradas / qtdTomadasnaCasa * 100)
+
+        let gastoPorAno = (curtosAno * valorQueimaAparelhos) + valorTotalManutencao
+
+
+        if (curtosAno >= 10) {
+            div_resultadoConta.innerHTML = `O nosso produto é essencial para você! <br> Na compra de ${tomadasCompradas} tomadas iot, você estará economizando cerca de R$${gastoPorAno}. <br> Gastando apenas R$${CompraDasTomadas} nas tomadas iot. <br> Protegendo ${protecao}% da sua casa. `
+        } else if (curtosAno < 10) {
+            div_resultadoConta.innerHTML = `O nosso produto te ajudará muito! <br> Na compra de ${tomadasCompradas} tomadas iot, você estará economizando cerca de R$${gastoPorAno}. <br> Gastando apenas R$${CompraDasTomadas} nas tomadas iot. <br> Protegendo ${protecao}% da sua casa.  `
+        } else if (curtosAno <= 5) {
+            div_resultadoConta.innerHTML = `O nosso produto te dará mais econômia! <br> Na compra de ${tomadasCompradas} tomadas iot, você estará economizando cerca de R$${gastoPorAno}. <br> Gastando apenas R$${CompraDasTomadas} nas tomadas iot. <br> Protegendo ${protecao}% sua casa. `
+        }
+
+    }
+
+
+</script>
