@@ -65,8 +65,10 @@
         let custoTotalMiot = numTomadasCompradas * 200;
         let tomadaDesprotegida = numTomadas - numTomadasCompradas;
         let custoTomadaDesprotegida = numTomadas * 40;
+        let tomadaNegativa = tomadaDesprotegida * 40;
 
-        let custoTotalFiacao = (numManutencao * 10 + custoTomadaDesprotegida) * 10;
+
+        let custoTotalFiacao = (tomadaDesprotegida * 10 + custoTomadaDesprotegida) * 10;
         let textinho_null = "";
 
         resultado.innerHTML = ""
@@ -84,7 +86,7 @@
         if (tomadaDesprotegida != 0) {
             textinho_null = `
             <p>Comprando ${numTomadasCompradas} tomadas da MIOT, para proteger seu imóvel que contêm ${numTomadas} tomadas.</p>
-            <p>Você deixa em risco ${tomadaDesprotegida} tomadas que podem incidir em um prejuízo de até <b>R$${custoTomadaDesprotegida},00</b></p>
+            <p>Você deixa em risco ${tomadaDesprotegida} tomadas que podem incidir em um prejuízo de até <b>R$${tomadaNegativa},00</b></p>
             `
         }
         resultado.innerHTML += `<div class="texto_resultado">
